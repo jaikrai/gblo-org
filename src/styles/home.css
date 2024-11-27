@@ -1,0 +1,16 @@
+/* Jumbotron Styles */
+.jumbotron-image {
+  background-attachment: fixed; /* Optional: Parallax effect */
+  transition: transform 0.3s ease-in-out; /* Smooth zoom */
+}
+
+.jumbotron-image:hover {
+  transform: scale(1.05); /* Slight zoom-in effect on hover */
+}
+
+/* Responsive Styles */
+@media screen and (min-width: 768px) {
+  .jumbotron-image {
+    background-attachment: fixed;
+  }
+}

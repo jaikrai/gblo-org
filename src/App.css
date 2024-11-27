@@ -36,3 +36,26 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  font-family: "Poppins", "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+}
+
+p,
+span,
+a {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+}
