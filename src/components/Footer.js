@@ -12,7 +12,7 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import YouTubeIcon from "@mui/icons-material/YouTube";
-import logo from "../assets/new_lo.png"; // Replace with the path to your logo
+import logo from "../assets/gblo1.png"; // Replace with the path to your logo
 
 const Footer = () => {
   return (

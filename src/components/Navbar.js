@@ -17,7 +17,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import LoginIcon from "@mui/icons-material/Login";
 import FavoriteIcon from "@mui/icons-material/Favorite"; // Donate icon
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import logo from "../assets/new_lo.png";
+import logo from "../assets/gblo1.png";
 
 const Navbar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);

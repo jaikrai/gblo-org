@@ -6,6 +6,7 @@ import "aos/dist/aos.css"; // Import AOS styles
 
 import update from "../assets/update1.jpg";
 import amstadam from "../assets/amsterdam.png";
+import gep from "../assets/gep.png";
 import Jumbotron from "./Jumbotron"; // Import the Jumbotron component
 import "../styles/home.css";
 import OurWorksSection from "./OurWorksSection";
@@ -40,7 +41,7 @@ const Home = () => {
       title: "Online Nepali School",
       description:
         "Learn the Nepali language and preserve our heritage with our online learning platform.",
-      image: "/path/to/slider-image2.jpg",
+      image: gep,
       link: "/nepali-school",
     },
     {
@@ -75,152 +76,163 @@ const Home = () => {
   ];
 
   return (
-    <Box sx={{ margin: "20px" }}>
-      <Container maxWidth="lg" sx={{ padding: "0 20px" }}>
-        {/* Jumbotron Section */}
-        <Box sx={{ marginBottom: "20px" }} data-aos="fade-up">
-          <Jumbotron slides={sliderContent} />
-        </Box>
-
-        {/* News Updates and Press Releases */}
-        <Box data-aos="fade-up">
-          <Typography
-            variant="h5"
-            sx={{ fontWeight: "bold", marginBottom: "10px" }}
-          >
-            Latest Updates
-          </Typography>
-          <Box
-            sx={{
-              width: "100%",
-              borderBottom: "1px solid #8f8b8a",
-              marginBottom: 2,
-            }}
-          ></Box>
-          <Grid container spacing={4}>
-            {/* News Updates Section */}
-            <Grid item xs={12} md={6} data-aos="fade-right">
-              <Typography
-                variant="h6"
-                sx={{ fontWeight: "bold", marginBottom: "10px" }}
-              >
-                News Updates
-              </Typography>
-              {updates.map((update) => (
-                <Box
-                  key={update.id}
-                  onClick={() => navigate(update.route)}
-                  sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    backgroundColor: "#f9f9f9",
-                    padding: "10px",
-                    borderRadius: "8px",
-                    "&:hover": { backgroundColor: "#f2f2f2" },
-                    cursor: "pointer",
-                    marginBottom: "15px",
-                  }}
-                  data-aos="zoom-in"
+    <Box>
+      {/* Jumbotron Section */}
+      <Box
+        sx={{
+          marginBottom: "20px",
+          width: "100%",
+          height: "100vh", // Full viewport height
+          position: "relative",
+          overflow: "hidden",
+          padding: "0px",
+        }}
+        data-aos="fade-up"
+      >
+        <Jumbotron slides={sliderContent} />
+      </Box>
+      <Box sx={{ margin: "20px" }}>
+        <Container maxWidth="lg" sx={{ padding: "0 20px" }}>
+          {/* News Updates and Press Releases */}
+          <Box data-aos="fade-up">
+            <Typography
+              variant="h5"
+              sx={{ fontWeight: "bold", marginBottom: "10px" }}
+            >
+              Latest Updates
+            </Typography>
+            <Box
+              sx={{
+                width: "100%",
+                borderBottom: "1px solid #8f8b8a",
+                marginBottom: 2,
+              }}
+            ></Box>
+            <Grid container spacing={4}>
+              {/* News Updates Section */}
+              <Grid item xs={12} md={6} data-aos="fade-right">
+                <Typography
+                  variant="h6"
+                  sx={{ fontWeight: "bold", marginBottom: "10px" }}
                 >
+                  News Updates
+                </Typography>
+                {updates.map((update) => (
                   <Box
-                    component="img"
-                    src={update.image}
-                    alt={update.title}
+                    key={update.id}
+                    onClick={() => navigate(update.route)}
                     sx={{
-                      width: "100%",
-                      height: "200px",
+                      display: "flex",
+                      flexDirection: "column",
+                      backgroundColor: "#f9f9f9",
+                      padding: "10px",
                       borderRadius: "8px",
-                      marginBottom: "10px",
+                      "&:hover": { backgroundColor: "#f2f2f2" },
+                      cursor: "pointer",
+                      marginBottom: "15px",
                     }}
-                  />
-                  <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-                    {update.title}
-                  </Typography>
-                  <Typography variant="body1" sx={{ marginTop: "10px" }}>
-                    {update.description}
-                  </Typography>
-                  <Button
-                    variant="text"
-                    sx={{
-                      marginTop: "10px",
-                      textTransform: "none",
-                      fontWeight: "bold",
-                    }}
+                    data-aos="zoom-in"
                   >
-                    Read More
-                  </Button>
-                </Box>
-              ))}
-            </Grid>
+                    <Box
+                      component="img"
+                      src={update.image}
+                      alt={update.title}
+                      sx={{
+                        width: "100%",
+                        height: "200px",
+                        borderRadius: "8px",
+                        marginBottom: "10px",
+                      }}
+                    />
+                    <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+                      {update.title}
+                    </Typography>
+                    <Typography variant="body1" sx={{ marginTop: "10px" }}>
+                      {update.description}
+                    </Typography>
+                    <Button
+                      variant="text"
+                      sx={{
+                        marginTop: "10px",
+                        textTransform: "none",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      Read More
+                    </Button>
+                  </Box>
+                ))}
+              </Grid>
 
-            {/* Press Releases Section */}
-            <Grid item xs={12} md={6} data-aos="fade-left">
-              <Typography
-                variant="h6"
-                sx={{ fontWeight: "bold", marginBottom: "10px" }}
-              >
-                Press Releases
-              </Typography>
-              {pressReleases.map((press) => (
-                <Box
-                  key={press.id}
-                  onClick={() => navigate(press.route)}
-                  sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    backgroundColor: "#f9f9f9",
-                    padding: "10px",
-                    borderRadius: "8px",
-                    "&:hover": { backgroundColor: "#f2f2f2" },
-                    cursor: "pointer",
-                    marginBottom: "15px",
-                  }}
-                  data-aos="fade-up"
+              {/* Press Releases Section */}
+              <Grid item xs={12} md={6} data-aos="fade-left">
+                <Typography
+                  variant="h6"
+                  sx={{ fontWeight: "bold", marginBottom: "10px" }}
                 >
+                  Press Releases
+                </Typography>
+                {pressReleases.map((press) => (
                   <Box
-                    component="img"
-                    src={press.image}
-                    alt={press.title}
+                    key={press.id}
+                    onClick={() => navigate(press.route)}
                     sx={{
-                      width: "100%",
-                      height: "200px",
+                      display: "flex",
+                      flexDirection: "column",
+                      backgroundColor: "#f9f9f9",
+                      padding: "10px",
                       borderRadius: "8px",
-                      marginBottom: "10px",
+                      "&:hover": { backgroundColor: "#f2f2f2" },
+                      cursor: "pointer",
+                      marginBottom: "15px",
                     }}
-                  />
-                  <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-                    {press.title}
-                  </Typography>
-                  <Typography variant="body1" sx={{ marginTop: "10px" }}>
-                    {press.description}
-                  </Typography>
-                  <Button
-                    variant="text"
-                    sx={{
-                      marginTop: "10px",
-                      textTransform: "none",
-                      fontWeight: "bold",
-                    }}
+                    data-aos="fade-up"
                   >
-                    Read More
-                  </Button>
-                </Box>
-              ))}
+                    <Box
+                      component="img"
+                      src={press.image}
+                      alt={press.title}
+                      sx={{
+                        width: "100%",
+                        height: "200px",
+                        borderRadius: "8px",
+                        marginBottom: "10px",
+                      }}
+                    />
+                    <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+                      {press.title}
+                    </Typography>
+                    <Typography variant="body1" sx={{ marginTop: "10px" }}>
+                      {press.description}
+                    </Typography>
+                    <Button
+                      variant="text"
+                      sx={{
+                        marginTop: "10px",
+                        textTransform: "none",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      Read More
+                    </Button>
+                  </Box>
+                ))}
+              </Grid>
             </Grid>
-          </Grid>
-        </Box>
+          </Box>
 
-        {/* Other sections with animations */}
-        <Box data-aos="fade-up">
-          <MissionSection />
-        </Box>
-        <Box data-aos="fade-right">
-          <OurWorksSection />
-        </Box>
-        <Box data-aos="fade-left">
-          <PartnerSection />
-        </Box>
-      </Container>
+          {/* Other sections with animations */}
+          <Box data-aos="fade-up">
+            <MissionSection />
+          </Box>
+          <Box data-aos="fade-right">
+            <OurWorksSection />
+          </Box>
+          <Box data-aos="fade-left">
+            <PartnerSection />
+          </Box>
+        </Container>
+      </Box>
     </Box>
   );
 };

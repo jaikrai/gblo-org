@@ -11,7 +11,6 @@ const Jumbotron = ({ slides }) => {
       sx={{
         position: "relative",
         width: "100%",
-        height: "400px", // Fixed height
         overflow: "hidden",
       }}
     >
@@ -28,18 +27,18 @@ const Jumbotron = ({ slides }) => {
             sx={{
               position: "relative",
               width: "100%",
-              height: "100%",
               cursor: "pointer",
             }}
           >
             {/* Slide Image */}
-            <img
+            <Box
+              component="img"
               src={slide.image}
               alt={slide.title}
-              style={{
+              sx={{
                 width: "100%",
-                height: "100%",
-                objectFit: "cover", // Adjusts the image to cover the fixed size
+                height: "auto", // Maintain aspect ratio
+                display: "block", // Ensures no extra space below images
               }}
             />
 

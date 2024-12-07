@@ -16,6 +16,8 @@ import GBLOHistory from "./components/GBLOHistory";
 import "./index.css";
 import BoardOfDirectors from "./components/BoardOfDirectors";
 import BoardOfAdvisors from "./components/BoardOfAdvisors";
+import BoardOfTrstee from "./components/BoardOfTrustee";
+import Jumbotron from "./components/Jumbotron";
 
 const App = () => {
   return (
@@ -39,8 +41,10 @@ const App = () => {
               <Route path="/about/directors" element={<BoardOfDirectors />} />
               <Route path="/about/advisors" element={<BoardOfAdvisors />} />
               <Route path="/store" element={<StorePage />} />
+              <Route path="/about/trustees" element={<BoardOfTrstee />} />
             </Routes>
           </div>
+
           {/* Partner Section */}
           {/* <PartnerSection /> */}
 

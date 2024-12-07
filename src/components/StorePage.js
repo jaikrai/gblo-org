@@ -1,133 +1,184 @@
 import React, { useState } from "react";
 import {
   Box,
+  Container,
   Typography,
   Grid,
+  Slider,
+  Chip,
   Card,
-  CardMedia,
   CardContent,
-  CardActions,
+  CardMedia,
   Button,
-  IconButton,
 } from "@mui/material";
-import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import StarIcon from "@mui/icons-material/Star";
+import "../styles/store.css";
 
-// Dummy data for store items
-const storeItems = [
+const products = [
   {
     id: 1,
     image: "https://via.placeholder.com/300",
-    title: "Book Title 1",
-    description: "An insightful book on literary art.",
-    price: "$20",
+    title: "Audio CD Set",
+    author: "Vernon Horton",
+    price: 130.9,
+    oldPrice: null,
+    rating: 4,
   },
   {
     id: 2,
     image: "https://via.placeholder.com/300",
-    title: "Book Title 2",
-    description: "A masterpiece on cultural heritage.",
-    price: "$25",
+    title: "Everybody's Fool",
+    author: "Byron Kelly",
+    price: 23.99,
+    oldPrice: 59.99,
+    rating: 5,
   },
   {
     id: 3,
     image: "https://via.placeholder.com/300",
-    title: "Book Title 3",
-    description: "A must-read for modern literature enthusiasts.",
-    price: "$30",
-  },
-  {
-    id: 4,
-    image: "https://via.placeholder.com/300",
-    title: "Book Title 4",
-    description: "An exceptional work exploring diverse cultures.",
-    price: "$18",
+    title: "Everyone Brave is Forgiven",
+    author: "Stephanie Moreno",
+    price: 16.46,
+    oldPrice: 30.46,
+    rating: 5,
   },
 ];
 
-const StorePage = () => {
-  const [cart, setCart] = useState([]);
+const authors = ["Vernon Horton", "Byron Kelly", "Stephanie Moreno"];
 
-  const handleAddToCart = (item) => {
-    setCart([...cart, item]);
-    alert(`${item.title} added to cart!`);
+const StorePage = () => {
+  const [priceRange, setPriceRange] = useState([10, 150]);
+
+  const handlePriceChange = (event, newValue) => {
+    setPriceRange(newValue);
   };
 
   return (
-    <Box sx={{ py: 4, px: 2 }}>
-      {/* Store Header */}
-      <Typography
-        variant="h3"
-        align="center"
-        sx={{ mb: 4, fontWeight: "bold", color: "primary.main" }}
-      >
-        Our Store
-      </Typography>
-
-      {/* Grid for Items */}
+    <Container maxWidth="lg" sx={{ py: 5 }}>
+      {/* Filters and Cart Section */}
       <Grid container spacing={4}>
-        {storeItems.map((item) => (
-          <Grid item xs={12} sm={6} md={4} lg={3} key={item.id}>
-            <Card
-              sx={{
-                height: "100%",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "space-between",
-                boxShadow: 3,
-                transition: "transform 0.2s, box-shadow 0.2s",
-                "&:hover": {
-                  transform: "translateY(-5px)",
-                  boxShadow: 6,
-                },
-              }}
-            >
-              {/* Image */}
-              <CardMedia
-                component="img"
-                height="200"
-                image={item.image}
-                alt={item.title}
-              />
+        {/* Sidebar */}
+        <Grid item xs={12} md={3}>
+          <Box>
+            <Typography variant="h6" sx={{ mb: 2 }}>
+              CART
+            </Typography>
+            <Typography variant="body2" sx={{ mb: 4 }}>
+              No products in the cart.
+            </Typography>
 
-              {/* Content */}
-              <CardContent>
-                <Typography variant="h6" gutterBottom>
-                  {item.title}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {item.description}
-                </Typography>
-                <Typography
-                  variant="h6"
-                  sx={{ mt: 2, fontWeight: "bold", color: "primary.main" }}
-                >
-                  {item.price}
-                </Typography>
-              </CardContent>
+            <Typography variant="h6" sx={{ mb: 2 }}>
+              FILTER BY PRICE
+            </Typography>
+            <Slider
+              value={priceRange}
+              onChange={handlePriceChange}
+              min={10}
+              max={150}
+              valueLabelDisplay="auto"
+            />
+            <Typography variant="body2" sx={{ mb: 4 }}>
+              Price: ${priceRange[0]} — ${priceRange[1]}
+            </Typography>
+            <Button variant="contained" sx={{ mb: 4 }}>
+              Filter
+            </Button>
 
-              {/* Actions */}
-              <CardActions sx={{ justifyContent: "space-between" }}>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={() => handleAddToCart(item)}
-                  startIcon={<AddShoppingCartIcon />}
+            <Typography variant="h6" sx={{ mb: 2 }}>
+              FILTER BY AUTHOR
+            </Typography>
+            <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
+              {authors.map((author) => (
+                <Chip key={author} label={author} clickable color="success" />
+              ))}
+            </Box>
+          </Box>
+        </Grid>
+
+        {/* Product Grid */}
+        <Grid item xs={12} md={9}>
+          <Grid container spacing={4}>
+            {products.map((product) => (
+              <Grid item xs={12} sm={6} md={4} key={product.id}>
+                <Card
+                  sx={{
+                    position: "relative",
+                    boxShadow: 3,
+                    borderRadius: "16px",
+                    overflow: "hidden",
+                  }}
                 >
-                  Add to Cart
-                </Button>
-                <IconButton
-                  size="large"
-                  color="secondary"
-                  onClick={() => alert(`Buying ${item.title}`)}
-                >
-                  Buy
-                </IconButton>
-              </CardActions>
-            </Card>
+                  {product.oldPrice && (
+                    <Box
+                      sx={{
+                        position: "absolute",
+                        top: 10,
+                        left: 10,
+                        backgroundColor: "primary.main",
+                        color: "#fff",
+                        px: 2,
+                        py: 0.5,
+                        borderRadius: "12px",
+                        fontSize: "12px",
+                      }}
+                    >
+                      SALE!
+                    </Box>
+                  )}
+                  <CardMedia
+                    component="img"
+                    height="200"
+                    image={product.image}
+                    alt={product.title}
+                  />
+                  <CardContent>
+                    <Typography variant="h6" gutterBottom>
+                      {product.title}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                      BY {product.author.toUpperCase()}
+                    </Typography>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        alignItems: "center",
+                        mt: 1,
+                        mb: 2,
+                        gap: 0.5,
+                      }}
+                    >
+                      {Array.from({ length: 5 }).map((_, i) => (
+                        <StarIcon
+                          key={i}
+                          fontSize="small"
+                          color={i < product.rating ? "warning" : "disabled"}
+                        />
+                      ))}
+                    </Box>
+                    <Typography variant="h6" sx={{ color: "primary.main" }}>
+                      ${product.price.toFixed(2)}
+                      {product.oldPrice && (
+                        <Typography
+                          component="span"
+                          sx={{
+                            textDecoration: "line-through",
+                            color: "text.disabled",
+                            fontSize: "0.9em",
+                            ml: 1,
+                          }}
+                        >
+                          ${product.oldPrice.toFixed(2)}
+                        </Typography>
+                      )}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
+            ))}
           </Grid>
-        ))}
+        </Grid>
       </Grid>
-    </Box>
+    </Container>
   );
 };
 

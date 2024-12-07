@@ -1,13 +1,26 @@
 import React, { useState } from "react";
 import { Box, Typography, Container, Grid, IconButton } from "@mui/material";
 import { Facebook, Twitter, YouTube } from "@mui/icons-material";
-import President from "../assets/president.png";
 
+// Import images dynamically
+const importImages = (context) => {
+  const images = {};
+  context.keys().forEach((key) => {
+    const imageName = key.replace("./", "").replace(/\.(png|jpe?g|svg)$/, "");
+    images[imageName] = context(key);
+  });
+  return images;
+};
+const images = importImages(
+  require.context("../assets", false, /\.(png|jpe?g|svg)$/)
+);
+
+// Directors data
 const directors = [
   {
     name: "Karna Gurung",
     title: "Chairperson",
-    image: President,
+    image: images["president"], // Matches the file name "president.png"
     socialMedia: {
       facebook: "https://facebook.com/janedoe",
       twitter: "https://twitter.com/janedoe",
@@ -15,9 +28,9 @@ const directors = [
     },
   },
   {
-    name: "John Smith",
-    title: "Executive Director",
-    image: "https://via.placeholder.com/300",
+    name: "Mamta Tamang",
+    title: "Sr. Vice President",
+    image: images["mamta"], // Matches the file name "mamta.png"
     socialMedia: {
       facebook: "https://facebook.com/johnsmith",
       twitter: "https://twitter.com/johnsmith",
@@ -25,9 +38,9 @@ const directors = [
     },
   },
   {
-    name: "Emily Johnson",
-    title: "Board Member",
-    image: "https://via.placeholder.com/300",
+    name: "Aavash Rikham Magar",
+    title: "Vice President",
+    image: images["avash"],
     socialMedia: {
       facebook: "https://facebook.com/emilyjohnson",
       twitter: "https://twitter.com/emilyjohnson",
@@ -35,9 +48,9 @@ const directors = [
     },
   },
   {
-    name: "Jane Doe",
-    title: "Chairperson",
-    image: "https://via.placeholder.com/300",
+    name: "Gopal Poudyel",
+    title: "Vice President",
+    image: images["gopal"],
     socialMedia: {
       facebook: "https://facebook.com/janedoe",
       twitter: "https://twitter.com/janedoe",
@@ -45,9 +58,9 @@ const directors = [
     },
   },
   {
-    name: "John Smith",
-    title: "Executive Director",
-    image: "https://via.placeholder.com/300",
+    name: "Patalo Antare",
+    title: "General Secretary",
+    image: images["patalo"],
     socialMedia: {
       facebook: "https://facebook.com/johnsmith",
       twitter: "https://twitter.com/johnsmith",
@@ -55,9 +68,9 @@ const directors = [
     },
   },
   {
-    name: "Emily Johnson",
-    title: "Board Member",
-    image: "https://via.placeholder.com/300",
+    name: "Diyalo Susan Majhi",
+    title: "Finance Secretary",
+    image: images["susan"],
     socialMedia: {
       facebook: "https://facebook.com/emilyjohnson",
       twitter: "https://twitter.com/emilyjohnson",
@@ -65,9 +78,9 @@ const directors = [
     },
   },
   {
-    name: "Jane Doe",
-    title: "Chairperson",
-    image: "https://via.placeholder.com/300",
+    name: "Lucky Rashi",
+    title: "Secretary",
+    image: images["lucky"],
     socialMedia: {
       facebook: "https://facebook.com/janedoe",
       twitter: "https://twitter.com/janedoe",
@@ -75,9 +88,9 @@ const directors = [
     },
   },
   {
-    name: "John Smith",
-    title: "Executive Director",
-    image: "https://via.placeholder.com/300",
+    name: "Arjun Pardhan",
+    title: "Press Secretary",
+    image: images["arjun"],
     socialMedia: {
       facebook: "https://facebook.com/johnsmith",
       twitter: "https://twitter.com/johnsmith",
